@@ -5,7 +5,59 @@
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<body>
+    {% if message %}
+    <script>
+        alert('{{ message }}');
+    </script>
+{%endif%}
     <body>
-    <!--Add a registration form here -->
+    <!--Header and Navbar -->
+    <header class="pb-5">
+        <nav class=" navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class=" navbar-brand" href="{% url 'djangoapp:index' %}">My Car Dealership</a>
+            {% if user.is_authenticated %}
+            <div class="ml-auto">
+                <a class="h6 mr-2 text-light">Welcome, {{user.username}}</a>
+                <a class="btn btn-outline-danger btn-sm" type="button" href="{% url 'djangoapp:logout' %}">Logout</a>
+            </div> 
+            {% else %}
+            <form action="{% url 'djangoapp:login' %}"  method="post" class="ml-auto">
+                {% csrf_token %}<!--Important do not touch-->
+                <input class="" type="text" id="username" name="username" placeholder="Username">
+                <input class="ml-2" type="password" id="pword" name="pword" placeholder="Password">
+                <input class="btn btn-outline-success btn-sm ml-2" type="submit" value="Login">
+                <a class="btn btn-outline-warning btn-sm ml-2" type="submit" href="{% url 'djangoapp:registration' %}">Sign Up</a>
+            </form>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main role="main" class="d-flex justify-content-center pt-3 ">
+        <form class="border border-dark p-4  bg-light d-flex flex-column" action="{% url 'djangoapp:registration' %}"  method="post">
+            {% csrf_token %}
+            
+            <h1 class="text-center">Sign Up</h1><br>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username: " name="username" required>
+            <label for="fname"><b>First Name</b></label>
+            <input type="text" placeholder="Enter First Name: " name="fname" required>
+            <label for="lname"><b>Last Name</b></label>
+            <input type="text" placeholder="Enter Last Name: " name="lname" required>
+            <label for="pword"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password: " name="pword" required>
+            <br>
+            <button class="btn btn-success align-self-center" type="submit">Sign Up</button>
+        </form>
+    </main>
+    
+
+    <!--Footer and navbar-->
+    <footer class="navbar navbar-expand-md navbar-dark fixed-bottom bg-dark">
+      <div class="container">
+        <a class="btn btn-sm btn-outline-info" type="button" href="{% url 'djangoapp:about' %}">About Us</a>
+        <a class="btn btn-sm btn-outline-info" type="button" href="{% url 'djangoapp:contact' %}">Contact Us</a>
+      </div>
+    </footer>
     </body>
 </html>
