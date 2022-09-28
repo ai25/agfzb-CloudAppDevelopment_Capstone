@@ -10,7 +10,7 @@
     <body>
         <header class="pb-5">
             <nav class=" navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <a class=" navbar-brand" href="{% url 'djangoapp:index' %}">Best Cars &#128663;</a>
+                <a class=" navbar-brand" href="{% url 'djangoapp:index' %}">My Car Dealership</a>
                 {% if user.is_authenticated %}
                 <div class="ml-auto">
                     <a class="h6 mr-2 text-light">Welcome, {{user.username}}</a>

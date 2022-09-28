@@ -23,7 +23,7 @@
     <!--Header and Navbar -->
     <header class="pb-5">
         <nav class=" navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class=" navbar-brand" href="{% url 'djangoapp:index' %}">Best Cars &#128663;</a>
+            <a class=" navbar-brand" href="{% url 'djangoapp:index' %}">My Car Dealership</a>
             {% if user.is_authenticated %}
             <div class="ml-auto">
                 <a class="h6 mr-2 text-light">Welcome, {{user.username}}</a>
@@ -43,12 +43,13 @@
     <main role="main" class="container text-center mt-3 border-dark">
         <div class="card ">
                         <div class="card-header">
-                            <h5 class="card-title text-center pt-1">Contact Us!</h5>
+                            <h5 class="card-title text-center pt-1">Contact Us
+                            </h5>
                         </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-text">Address: 123 Main Street</h5>
-                            <h5 class="card-text">Phone: (123)-456-7890</h5>
-                            <h5 class="card-text">E-Mail: fake-email@gmail.com</h5>
+                        <div class="card-body">
+                            <h5 class="card-text">Address: 1 Lorem Street</h5>
+                            <h5 class="card-text">Phone: 0123456789</h5>
+                            <h5>E-Mail: <a href="mailto:lorem@ipsum.com" class="card-text">lorem@ipsum.com</a></h5>
                         </div>
         </div>
         
